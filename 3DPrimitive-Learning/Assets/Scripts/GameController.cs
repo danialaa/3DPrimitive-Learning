@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class GameController : MonoBehaviour
 {
     public ShapePanelView shapePanelView;
+    public Button editButton;
 
     GameObject primitive;
 
@@ -18,6 +19,7 @@ public class GameController : MonoBehaviour
         shapePanelView.Init(editShape);
         shapePanelView.gameObject.SetActive(true);
 
+        editButton.onClick.AddListener(openEditPanel);
     }
 
     void Start()
@@ -32,4 +34,8 @@ public class GameController : MonoBehaviour
         }
     }
 
+    void openEditPanel()
+    {
+        shapePanelView.gameObject.SetActive(true);
+    }
 }

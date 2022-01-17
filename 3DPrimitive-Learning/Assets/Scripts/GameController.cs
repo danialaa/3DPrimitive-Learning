@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 {
     public ShapePanelView shapePanelView;
     public Button editButton;
+    public float rotationSpeed;
 
     GameObject primitive;
 
@@ -37,5 +38,34 @@ public class GameController : MonoBehaviour
     void openEditPanel()
     {
         shapePanelView.gameObject.SetActive(true);
+    }
+
+    private void editShape()
+    {
+        shapePanelView.gameObject.SetActive(false);
+        Destroy(primitive);
+
+        switch(shapePanelView.selectedType)
+        {
+            case ShapeTypes.Cube:
+                primitive = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                break;
+
+            case ShapeTypes.Cylinder:
+                primitive = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+                break;
+
+            case ShapeTypes.Sphere:
+                primitive = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                break;
+        }
+
+        primitive.GetComponent<Renderer>().material.color = shapePanelView.selectedColor;
+        primitive.transform.SetParent(gameObject.transform);
+        primitive.transform.position = Vector3.zero;
+        primitive.transform.localRotation = Quaternion.Euler(-20, 45, -20);
+        //primitive.transform.localScale = new Vector3(2, 2, 2);
+        primitive.AddComponent<PrimitiveController>();
+        primitive.SetActive(true);
     }
 }

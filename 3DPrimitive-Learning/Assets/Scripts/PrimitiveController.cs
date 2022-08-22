@@ -5,13 +5,17 @@ using UnityEngine;
 public class PrimitiveController : MonoBehaviour
 {
     float rotationSpeed = 6;
+    bool isDragging = false;
 
-    private void OnMouseDrag()
+    private void Update()
     {
-        if(Input.GetMouseButtonDown(1))
-        {
+        if (Input.GetMouseButton(1))
+            isDragging = true;
+        else
+            isDragging = false;
+
+        if (isDragging)
             updatePrimitiveRotation();
-        }
     }
 
     private Vector2 getDragAmount()

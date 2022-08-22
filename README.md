@@ -1,5 +1,8 @@
 # 3DPrimitive-Learning
  An application to teach simple 3d primitive properties.  
+ 
+ ![primitivedemo](https://user-images.githubusercontent.com/52839918/185891588-29c07785-cc24-457b-a7a5-98091f9e9658.gif)
+ 
  <br/>
  ## System Overview:  
    
